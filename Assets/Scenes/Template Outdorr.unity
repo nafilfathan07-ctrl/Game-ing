@@ -175,6 +175,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapOutdoor
       objectReference: {fileID: 0}
+    - target: {fileID: 2382799219754379413, guid: b6c05142847d2c04b8dabd53a34e4c4f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222065738425870839, guid: b6c05142847d2c04b8dabd53a34e4c4f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222065738425870839, guid: b6c05142847d2c04b8dabd53a34e4c4f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222065738425870839, guid: b6c05142847d2c04b8dabd53a34e4c4f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -459,13 +475,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731527626}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.23690291, y: -0.6082483, z: -0.74300385, w: -0.14783907}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 256.883, y: 130.645, z: 17.569}
 --- !u!114 &1731527629
 MonoBehaviour:
   m_ObjectHideFlags: 0
