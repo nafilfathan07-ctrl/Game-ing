@@ -5,70 +5,76 @@ using System.Collections;
 
 public enum Speaker { Left, Right, None }
 
-// Class untuk data tiap baris cerita
 [System.Serializable]
 public class DialogueLine
 {
     public string speakerName;
     [TextArea(2, 4)]
     public string text;
-    public Speaker activeSpeaker = Speaker.None;
-    public Sprite leftPortraitOverride;  // Opsional: untuk ganti ekspresi wajah
-    public Sprite rightPortraitOverride;
+    public Speaker activeSpeaker; 
+    public Sprite portraitOverride; 
 }
 
 public class DialogueManager : MonoBehaviour
 {
-    [Header("Referensi Portrait")]
-    public Image leftPortrait;
-    public Image rightPortrait;
+    [Header("Portrait (Pisahkan dari kotak dialog di Hierarchy!)")]
+    public Image leftPortraitImage;
+    public Image rightPortraitImage;
 
-    [Header("Referensi Teks")]
-    public TMP_Text nameText;
-    public TMP_Text dialogueText;
+    [Header("Wadah Teks (Kiri)")]
+    public GameObject leftTextBubble;
+    public TMP_Text leftNameText;
+    public TMP_Text leftDialogueText;
 
-    [Header("Pengaturan Efek")]
-    public float typingSpeed = 0.03f;      // Detik per karakter
-    public float colorTransitionSpeed = 6f; // Kecepatan transisi cahaya
-    [Range(0f, 1f)] public float inactiveBrightness = 0.4f; // Rentang diperlebar sampai 0 (Hitam)
+    [Header("Wadah Teks (Kanan)")]
+    public GameObject rightTextBubble;
+    public TMP_Text rightNameText;
+    public TMP_Text rightDialogueText;
+
+    [Header("Wadah Teks (Narasi / None) - Opsional")]
+    public GameObject centerTextBubble; 
+    public TMP_Text centerNameText; 
+    public TMP_Text centerDialogueText;
+
+    [Header("Pengaturan Teks")]
+    public float typingSpeed = 0.03f;
+    
+    [Header("Pengaturan Dimming & Skala (Animasi)")]
+    public float dimTransitionSpeed = 6f;
+    [Range(0f, 1f)] public float inactiveBrightness = 0.3f; 
+    // Pengaturan animasi ukuran (Scale)
+    public Vector3 activeScale = new Vector3(1.05f, 1.05f, 1f); // Sedikit membesar saat ngomong
+    public Vector3 inactiveScale = new Vector3(0.95f, 0.95f, 1f); // Sedikit mengecil saat diam
 
     [Header("Data Cerita")]
     public DialogueLine[] lines;
 
-    private Material leftMat;
-    private Material rightMat;
     private int currentIndex = 0;
     private bool isTyping = false;
     private Coroutine typingRoutine;
     private Coroutine leftFadeRoutine;
     private Coroutine rightFadeRoutine;
+    private TMP_Text currentDialogText;
 
     void Start()
     {
-        // Bikin instance material sendiri-sendiri biar tidak saling menimpa
-        leftMat = new Material(leftPortrait.material);
-        rightMat = new Material(rightPortrait.material);
-        leftPortrait.material = leftMat;
-        rightPortrait.material = rightMat;
+        leftTextBubble.SetActive(false);
+        rightTextBubble.SetActive(false);
+        if (centerTextBubble != null) centerTextBubble.SetActive(false);
+
+        // Atur skala awal agar tidak kaget
+        leftPortraitImage.rectTransform.localScale = inactiveScale;
+        rightPortraitImage.rectTransform.localScale = inactiveScale;
 
         ShowLine(0);
     }
 
     void Update()
     {
-        // Klik mouse kiri atau tekan Space buat lanjut dialog
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
-            if (isTyping)
-            {
-                // Kalau teks masih mengetik, langsung munculkan semua kalimatnya
-                CompleteTyping();
-            }
-            else
-            {
-                // Kalau teks sudah selesai, lanjut ke baris berikutnya
-                NextLine();
-            }
+            if (isTyping) CompleteTyping();
+            else NextLine();
         }
     }
 
@@ -77,25 +83,61 @@ public class DialogueManager : MonoBehaviour
         currentIndex = index;
         DialogueLine line = lines[index];
 
-        nameText.text = line.speakerName;
+        leftTextBubble.SetActive(false);
+        rightTextBubble.SetActive(false);
+        if (centerTextBubble != null) centerTextBubble.SetActive(false);
 
-        // Ganti sprite jika ada gambar ekspresi baru yang dimasukkan
-        if (line.leftPortraitOverride != null) leftPortrait.sprite = line.leftPortraitOverride;
-        if (line.rightPortraitOverride != null) rightPortrait.sprite = line.rightPortraitOverride;
+        if (line.activeSpeaker == Speaker.Left)
+        {
+            rightPortraitImage.transform.SetAsFirstSibling();
+            
+            leftTextBubble.transform.SetAsLastSibling();
+            leftPortraitImage.transform.SetAsLastSibling();
+            
+            leftTextBubble.SetActive(true);
+            leftNameText.text = line.speakerName;
+            currentDialogText = leftDialogueText;
+
+            if (line.portraitOverride != null) leftPortraitImage.sprite = line.portraitOverride;
+        }
+        else if (line.activeSpeaker == Speaker.Right)
+        {
+            leftPortraitImage.transform.SetAsFirstSibling();
+            
+            rightTextBubble.transform.SetAsLastSibling();
+            rightPortraitImage.transform.SetAsLastSibling();
+            
+            rightTextBubble.SetActive(true);
+            rightNameText.text = line.speakerName;
+            currentDialogText = rightDialogueText;
+
+            if (line.portraitOverride != null) rightPortraitImage.sprite = line.portraitOverride;
+        }
+        else if (line.activeSpeaker == Speaker.None)
+        {
+            if (centerTextBubble != null)
+            {
+                centerTextBubble.transform.SetAsLastSibling();
+                centerTextBubble.SetActive(true);
+                if (centerNameText != null) centerNameText.text = line.speakerName;
+                currentDialogText = centerDialogueText;
+            }
+        }
 
         SetActiveSpeaker(line.activeSpeaker);
 
         if (typingRoutine != null) StopCoroutine(typingRoutine);
-        typingRoutine = StartCoroutine(TypeText(line.text));
+        if (currentDialogText != null)
+            typingRoutine = StartCoroutine(TypeText(line.text));
     }
 
     IEnumerator TypeText(string fullText)
     {
         isTyping = true;
-        dialogueText.text = "";
+        currentDialogText.text = "";
         foreach (char c in fullText)
         {
-            dialogueText.text += c;
+            currentDialogText.text += c;
             yield return new WaitForSeconds(typingSpeed);
         }
         isTyping = false;
@@ -104,56 +146,69 @@ public class DialogueManager : MonoBehaviour
     void CompleteTyping()
     {
         if (typingRoutine != null) StopCoroutine(typingRoutine);
-        dialogueText.text = lines[currentIndex].text;
+        if (currentDialogText != null) currentDialogText.text = lines[currentIndex].text;
         isTyping = false;
     }
 
     void NextLine()
     {
         int next = currentIndex + 1;
-        if (next < lines.Length)
-        {
-            ShowLine(next);
-        }
+        if (next < lines.Length) ShowLine(next);
         else
         {
-            // Kalau sudah habis, bisa ditambahkan aksi lain, misal menutup dialog
+            leftTextBubble.SetActive(false);
+            rightTextBubble.SetActive(false);
+            if (centerTextBubble != null) centerTextBubble.SetActive(false);
             Debug.Log("Dialog selesai.");
         }
     }
 
     void SetActiveSpeaker(Speaker speaker)
     {
-        // Target = 1 (Terang) jika aktif, Target = 0 (Gelap) jika diam
-        float leftTarget = (speaker == Speaker.Left) ? 1f : 0f;
-        float rightTarget = (speaker == Speaker.Right) ? 1f : 0f;
+        float leftTargetBrightness = (speaker == Speaker.Left) ? 1f : inactiveBrightness;
+        float rightTargetBrightness = (speaker == Speaker.Right) ? 1f : inactiveBrightness;
 
-        // Kalau None, gelapkan dua-duanya
+        Vector3 leftTargetScale = (speaker == Speaker.Left) ? activeScale : inactiveScale;
+        Vector3 rightTargetScale = (speaker == Speaker.Right) ? activeScale : inactiveScale;
+
         if (speaker == Speaker.None)
         {
-            leftTarget = 0f;
-            rightTarget = 0f;
+            leftTargetBrightness = inactiveBrightness;
+            rightTargetBrightness = inactiveBrightness;
+            leftTargetScale = inactiveScale;
+            rightTargetScale = inactiveScale;
         }
 
         if (leftFadeRoutine != null) StopCoroutine(leftFadeRoutine);
         if (rightFadeRoutine != null) StopCoroutine(rightFadeRoutine);
 
-        leftFadeRoutine = StartCoroutine(LerpBrightness(leftMat, leftTarget));
-        rightFadeRoutine = StartCoroutine(LerpBrightness(rightMat, rightTarget));
+        leftFadeRoutine = StartCoroutine(LerpColorAndScale(leftPortraitImage, leftTargetBrightness, leftTargetScale));
+        rightFadeRoutine = StartCoroutine(LerpColorAndScale(rightPortraitImage, rightTargetBrightness, rightTargetScale));
     }
 
-    IEnumerator LerpBrightness(Material mat, float targetIsActive)
+    // Fungsi yang diperbarui: Animasi warna DAN ukuran
+    IEnumerator LerpColorAndScale(Image portrait, float targetBrightness, Vector3 targetScale)
     {
-        mat.SetFloat("_Saturation", 1f); // Pastikan warna tidak hilang
+        Color currentColor = portrait.color;
+        Color targetColor = new Color(targetBrightness, targetBrightness, targetBrightness, 1f);
+        
+        Vector3 currentScale = portrait.rectTransform.localScale;
 
-        float targetBrightness = (targetIsActive == 1f) ? 1f : inactiveBrightness;
-        float currentBrightness = mat.GetFloat("_Brightness");
-
-        while (!Mathf.Approximately(currentBrightness, targetBrightness))
+        // Looping berjalan selama warna atau ukurannya belum mencapai target
+        while (Vector4.Distance(currentColor, targetColor) > 0.01f || Vector3.Distance(currentScale, targetScale) > 0.001f)
         {
-            currentBrightness = Mathf.MoveTowards(currentBrightness, targetBrightness, colorTransitionSpeed * Time.deltaTime);
-            mat.SetFloat("_Brightness", currentBrightness);
+            // Transisi halus untuk Warna
+            currentColor = Color.Lerp(currentColor, targetColor, dimTransitionSpeed * Time.deltaTime);
+            portrait.color = currentColor;
+
+            // Transisi halus untuk Skala (Ukuran membesar/mengecil)
+            currentScale = Vector3.Lerp(currentScale, targetScale, dimTransitionSpeed * Time.deltaTime);
+            portrait.rectTransform.localScale = currentScale;
+
             yield return null;
         }
+        
+        portrait.color = targetColor;
+        portrait.rectTransform.localScale = targetScale;
     }
 }
