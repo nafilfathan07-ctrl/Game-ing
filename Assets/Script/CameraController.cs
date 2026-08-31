@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
     public float maxZoom = 10f;
 
     [Header("Pengaturan Rotasi Tiny Room")]
-    public float rotationDuration = 0.3f; // lama transisi rotasi (detik)
+    public float rotationDuration = 0.3f;
     private bool isRotating = false;
 
     [Header("Referensi Rotasi & Posisi")]
@@ -21,9 +21,6 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         cam = GetComponent<Camera>();
-
-        // Pastikan kamera selalu menghadap tepat ke pivot,
-        // jadi tidak perlu tebak-tebak sudut rotasi manual.
         transform.LookAt(cameraPivot);
     }
 
@@ -36,8 +33,8 @@ public class CameraController : MonoBehaviour
 
     void HandlePan()
     {
-        float moveX = Input.GetAxis("Horizontal") * panSpeed * Time.deltaTime;
-        float moveZ = Input.GetAxis("Vertical") * panSpeed * Time.deltaTime;
+        float moveX = -Input.GetAxis("Horizontal") * panSpeed * Time.deltaTime;
+        float moveZ = -Input.GetAxis("Vertical") * panSpeed * Time.deltaTime;
         cameraPivot.Translate(moveX, 0, moveZ, Space.Self);
     }
 
@@ -46,29 +43,30 @@ public class CameraController : MonoBehaviour
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         if (scroll != 0.0f)
         {
-            cam.orthographicSize -= scroll * zoomSpeed;
-            cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, minZoom, maxZoom);
+            if (cam.orthographic)
+            {
+                cam.orthographicSize -= scroll * zoomSpeed;
+                cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, minZoom, maxZoom);
+            }
+            else
+            {
+                cam.fieldOfView -= scroll * (zoomSpeed * 5f);
+                cam.fieldOfView = Mathf.Clamp(cam.fieldOfView, minZoom * 5f, maxZoom * 5f);
+            }
         }
     }
 
     void HandleRotationInput()
     {
-        // DEBUG SEMENTARA — hapus baris Debug.Log ini setelah masalah ketemu
-        if (Input.anyKeyDown)
-            Debug.Log("Ada tombol ditekan. isRotating = " + isRotating);
-
-        // Cegah spam input Q/E saat animasi rotasi masih berjalan
         if (isRotating) return;
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Debug.Log("Q terdeteksi, mulai rotasi");
             StartCoroutine(RotatePivot(90f));
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("E terdeteksi, mulai rotasi");
             StartCoroutine(RotatePivot(-90f));
         }
     }
@@ -85,13 +83,11 @@ public class CameraController : MonoBehaviour
         {
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / rotationDuration);
-            // Smoothstep biar transisi terasa natural (mulai & berhenti halus)
             t = t * t * (3f - 2f * t);
             cameraPivot.rotation = Quaternion.Slerp(startRot, endRot, t);
             yield return null;
         }
 
-        // Snap presisi di akhir supaya tidak ada floating point drift
         cameraPivot.rotation = endRot;
         isRotating = false;
     }
