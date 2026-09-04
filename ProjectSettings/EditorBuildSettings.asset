@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Template Outdorr.unity
     guid: 99a64bdef64071f499557e5a6825b4d8
+  - enabled: 1
+    path: Assets/Scenes/Template Indoor.unity
+    guid: 1fafe86f67713924e98a4f7d8181584f
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
