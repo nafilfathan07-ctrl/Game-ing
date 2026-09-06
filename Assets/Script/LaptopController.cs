@@ -27,7 +27,7 @@ public class LaptopController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C) && hasFlashdisk && !isAnimating)
+        if (Input.GetKeyDown(KeyCode.Tab) && hasFlashdisk && !isAnimating)
         {
             if (isLaptopOpen)
             {
@@ -47,7 +47,6 @@ public class LaptopController : MonoBehaviour
         if (buka) 
         {
             laptopCanvas.SetActive(true);
-            // Matikan layar (hitamkan) setiap kali laptop baru mau dibuka
             Color c = blackScreen.color;
             c.a = 1f;
             blackScreen.color = c;
@@ -55,7 +54,6 @@ public class LaptopController : MonoBehaviour
         }
         else
         {
-            // Matikan layar secara instan saat mulai ditutup
             blackScreen.gameObject.SetActive(true);
         }
 
@@ -74,7 +72,6 @@ public class LaptopController : MonoBehaviour
         
         if (buka)
         {
-            // Setelah laptop selesai naik, tunggu 0.2 detik, lalu nyalakan layar
             yield return new WaitForSeconds(0.2f);
             yield return StartCoroutine(NyalakanLayar());
         }
