@@ -17,7 +17,7 @@ public class DialogueLine
 
 public class DialogueManager : MonoBehaviour
 {
-    [Header("Portrait (Pisahkan dari kotak dialog di Hierarchy!)")]
+    [Header("Portrait")]
     public Image leftPortraitImage;
     public Image rightPortraitImage;
 
@@ -31,7 +31,7 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text rightNameText;
     public TMP_Text rightDialogueText;
 
-    [Header("Wadah Teks (Narasi / None) - Opsional")]
+    [Header("Wadah Teks (Narasi / None)")]
     public GameObject centerTextBubble; 
     public TMP_Text centerNameText; 
     public TMP_Text centerDialogueText;
@@ -39,15 +39,17 @@ public class DialogueManager : MonoBehaviour
     [Header("Pengaturan Teks")]
     public float typingSpeed = 0.03f;
     
-    [Header("Pengaturan Dimming & Skala (Animasi)")]
+    [Header("Pengaturan Dimming & Skala")]
     public float dimTransitionSpeed = 6f;
     [Range(0f, 1f)] public float inactiveBrightness = 0.3f; 
-    // Pengaturan animasi ukuran (Scale)
-    public Vector3 activeScale = new Vector3(1.05f, 1.05f, 1f); // Sedikit membesar saat ngomong
-    public Vector3 inactiveScale = new Vector3(0.95f, 0.95f, 1f); // Sedikit mengecil saat diam
+    public Vector3 activeScale = new Vector3(1.05f, 1.05f, 1f);
+    public Vector3 inactiveScale = new Vector3(0.95f, 0.95f, 1f);
 
     [Header("Data Cerita")]
     public DialogueLine[] lines;
+
+    [Header("Pengatur Transisi")]
+    public VNToExploreManager vnManager;
 
     private int currentIndex = 0;
     private bool isTyping = false;
@@ -62,7 +64,6 @@ public class DialogueManager : MonoBehaviour
         rightTextBubble.SetActive(false);
         if (centerTextBubble != null) centerTextBubble.SetActive(false);
 
-        // Atur skala awal agar tidak kaget
         leftPortraitImage.rectTransform.localScale = inactiveScale;
         rightPortraitImage.rectTransform.localScale = inactiveScale;
 
@@ -159,7 +160,16 @@ public class DialogueManager : MonoBehaviour
             leftTextBubble.SetActive(false);
             rightTextBubble.SetActive(false);
             if (centerTextBubble != null) centerTextBubble.SetActive(false);
+            
+            if (leftPortraitImage != null) leftPortraitImage.gameObject.SetActive(false);
+            if (rightPortraitImage != null) rightPortraitImage.gameObject.SetActive(false);
+
             Debug.Log("Dialog selesai.");
+            
+            if (vnManager != null)
+            {
+                vnManager.SelesaiVN();
+            }
         }
     }
 
@@ -186,28 +196,19 @@ public class DialogueManager : MonoBehaviour
         rightFadeRoutine = StartCoroutine(LerpColorAndScale(rightPortraitImage, rightTargetBrightness, rightTargetScale));
     }
 
-    // Fungsi yang diperbarui: Animasi warna DAN ukuran
     IEnumerator LerpColorAndScale(Image portrait, float targetBrightness, Vector3 targetScale)
     {
         Color currentColor = portrait.color;
         Color targetColor = new Color(targetBrightness, targetBrightness, targetBrightness, 1f);
-        
         Vector3 currentScale = portrait.rectTransform.localScale;
 
-        // Looping berjalan selama warna atau ukurannya belum mencapai target
         while (Vector4.Distance(currentColor, targetColor) > 0.01f || Vector3.Distance(currentScale, targetScale) > 0.001f)
         {
-            // Transisi halus untuk Warna
-            currentColor = Color.Lerp(currentColor, targetColor, dimTransitionSpeed * Time.deltaTime);
-            portrait.color = currentColor;
-
-            // Transisi halus untuk Skala (Ukuran membesar/mengecil)
-            currentScale = Vector3.Lerp(currentScale, targetScale, dimTransitionSpeed * Time.deltaTime);
-            portrait.rectTransform.localScale = currentScale;
-
+            portrait.color = Color.Lerp(portrait.color, targetColor, Time.deltaTime * dimTransitionSpeed);
+            portrait.rectTransform.localScale = Vector3.Lerp(portrait.rectTransform.localScale, targetScale, Time.deltaTime * dimTransitionSpeed);
             yield return null;
         }
-        
+
         portrait.color = targetColor;
         portrait.rectTransform.localScale = targetScale;
     }

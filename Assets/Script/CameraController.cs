@@ -16,12 +16,31 @@ public class CameraController : MonoBehaviour
     [Header("Referensi Rotasi & Posisi")]
     public Transform cameraPivot;
 
+    [Header("Sistem Tembok Dinamis")]
+    public Transform[] walls;
+    public float angkatJarak = 8f;
+    public float angkatSpeed = 6f;
+
     private Camera cam;
+    private int currentSideIndex = 0;
+    private Vector3[] posisiAwalTembok;
 
     void Start()
     {
         cam = GetComponent<Camera>();
         transform.LookAt(cameraPivot);
+
+        if (walls != null && walls.Length > 0)
+        {
+            posisiAwalTembok = new Vector3[walls.Length];
+            for (int i = 0; i < walls.Length; i++)
+            {
+                if (walls[i] != null)
+                {
+                    posisiAwalTembok[i] = walls[i].position;
+                }
+            }
+        }
     }
 
     void Update()
@@ -29,6 +48,7 @@ public class CameraController : MonoBehaviour
         HandlePan();
         HandleZoom();
         HandleRotationInput();
+        UpdatePosisiTembok();
     }
 
     void HandlePan()
@@ -62,11 +82,19 @@ public class CameraController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            if (walls != null && walls.Length > 0)
+            {
+                currentSideIndex = (currentSideIndex + 1) % walls.Length;
+            }
             StartCoroutine(RotatePivot(90f));
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
+            if (walls != null && walls.Length > 0)
+            {
+                currentSideIndex = (currentSideIndex - 1 + walls.Length) % walls.Length;
+            }
             StartCoroutine(RotatePivot(-90f));
         }
     }
@@ -90,5 +118,26 @@ public class CameraController : MonoBehaviour
 
         cameraPivot.rotation = endRot;
         isRotating = false;
+    }
+
+    void UpdatePosisiTembok()
+    {
+        if (walls == null || walls.Length == 0) return;
+
+        int nextSideIndex = (currentSideIndex + 1) % walls.Length;
+
+        for (int i = 0; i < walls.Length; i++)
+        {
+            if (walls[i] == null) continue;
+
+            Vector3 targetPos = posisiAwalTembok[i];
+
+            if (i == currentSideIndex || i == nextSideIndex)
+            {
+                targetPos += Vector3.up * angkatJarak;
+            }
+
+            walls[i].position = Vector3.Lerp(walls[i].position, targetPos, Time.deltaTime * angkatSpeed);
+        }
     }
 }
