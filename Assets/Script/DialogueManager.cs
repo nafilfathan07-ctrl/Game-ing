@@ -91,10 +91,13 @@ public class DialogueManager : MonoBehaviour
         if (line.activeSpeaker == Speaker.Left)
         {
             rightPortraitImage.transform.SetAsFirstSibling();
-            
-            leftTextBubble.transform.SetAsLastSibling();
+
+            // PENTING: portrait dinaikkan DULUAN, baru text bubble.
+            // SetAsLastSibling yang dipanggil PALING AKHIR = tampil PALING DEPAN.
+            // Jadi urutannya harus: portrait dulu, text bubble menyusul di atasnya.
             leftPortraitImage.transform.SetAsLastSibling();
-            
+            leftTextBubble.transform.SetAsLastSibling();
+
             leftTextBubble.SetActive(true);
             leftNameText.text = line.speakerName;
             currentDialogText = leftDialogueText;
@@ -104,10 +107,10 @@ public class DialogueManager : MonoBehaviour
         else if (line.activeSpeaker == Speaker.Right)
         {
             leftPortraitImage.transform.SetAsFirstSibling();
-            
-            rightTextBubble.transform.SetAsLastSibling();
+
             rightPortraitImage.transform.SetAsLastSibling();
-            
+            rightTextBubble.transform.SetAsLastSibling();
+
             rightTextBubble.SetActive(true);
             rightNameText.text = line.speakerName;
             currentDialogText = rightDialogueText;

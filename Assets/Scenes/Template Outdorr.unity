@@ -612,8 +612,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 433.17126, y: 189.95998}
-  m_SizeDelta: {x: 4083.1196, y: 379.92}
+  m_AnchoredPosition: {x: -75, y: 149}
+  m_SizeDelta: {x: 1760.966, y: 337.48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &106578057
 MonoBehaviour:
@@ -635,7 +635,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a0e319c0922bdaa49b135bfa385f8b14, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4ec8cb5698cef2045b49ce7c736126a4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -797,7 +797,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &235893043
 RectTransform:
   m_ObjectHideFlags: 0
@@ -816,8 +816,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -302.8444, y: 158.91}
-  m_SizeDelta: {x: 3780.3555, y: 337.48}
+  m_AnchoredPosition: {x: 77, y: 149}
+  m_SizeDelta: {x: 1760.9658, y: 337.48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &235893044
 MonoBehaviour:
@@ -839,7 +839,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8c68a1ddbd5738c4b801f221752fab1b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9a25c5e3e51559845be1c73f4e9391fa, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1018,8 +1018,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -637, y: -18}
-  m_SizeDelta: {x: 505.155, y: 50}
+  m_AnchoredPosition: {x: -448, y: 36}
+  m_SizeDelta: {x: 518.2001, y: 97.1394}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &323182751
 MonoBehaviour:
@@ -1107,7 +1107,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -97.12648, y: 0, z: -461.59814, w: -113.448135}
+  m_margin: {x: -43.59163, y: 0, z: -966.03796, w: -64.51268}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1227,7 +1227,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 659306177}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1235,7 +1235,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -130, y: 82}
+  m_AnchoredPosition: {x: -567, y: 142}
   m_SizeDelta: {x: 256.1968, y: 40.2638}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &659306179
@@ -1267,8 +1267,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4279900698
+  m_fontColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1292,7 +1292,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1324,7 +1324,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -372.9469, w: 13.1214905}
+  m_margin: {x: -48.960266, y: 0, z: -185.1936, w: -33.4393}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1700,7 +1700,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 112, y: -42.565}
+  m_AnchoredPosition: {x: -347, y: 32}
   m_SizeDelta: {x: 518.2001, y: 102.2127}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &797178918
@@ -1791,7 +1791,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -140.1951, y: 0, z: -428.91797, w: -12.040375}
+  m_margin: {x: -140.1951, y: 0, z: -877.7616, w: -58.47548}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1839,8 +1839,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -112, y: 87}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 522, y: 138}
+  m_SizeDelta: {x: 503.9568, y: 60.2568}
   m_Pivot: {x: 0.54913884, y: 0.7120294}
 --- !u!114 &811802917
 MonoBehaviour:
@@ -1871,8 +1871,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4279900698
+  m_fontColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1896,7 +1896,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1928,7 +1928,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -7.3656616, z: -0.798584, w: 0.015914917}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2215,7 +2215,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1072475350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2682,65 +2682,35 @@ MonoBehaviour:
   centerDialogueText: {fileID: 0}
   typingSpeed: 0.03
   dimTransitionSpeed: 6
-  inactiveBrightness: 0.55
-  activeScale: {x: 1.1, y: 1.1, z: 1}
-  inactiveScale: {x: 0.9, y: 0.9, z: 1}
+  inactiveBrightness: 0.4
+  activeScale: {x: 1.25, y: 1.25, z: 1}
+  inactiveScale: {x: 1, y: 1, z: 1}
   lines:
   - speakerName: Mentor
     text: '"Koneksi stabil. Saluran audio terenkripsi. Apa kau bisa mendengarku dari
       titik pantau itu?"'
     activeSpeaker: 1
-    portraitOverride: {fileID: 0}
+    portraitOverride: {fileID: 21300000, guid: cd8db9821db63044fb4a10ff822a33cc, type: 3}
   - speakerName: MC
     text: '"Suara Bapak terdengar jelas. Aku sedang melihat ke arah rumah Richard
       sekarang. Kondisinya sepi."'
     activeSpeaker: 0
-    portraitOverride: {fileID: 0}
+    portraitOverride: {fileID: 21300000, guid: 214fa6dc1e1846843b91a955abdc4c4d, type: 3}
   - speakerName: Mentor
     text: '"Bagus. Polisi baru saja pergi, tapi mereka akan kembali besok pagi dengan
       tim forensik penuh. Kita harus bergerak lebih dulu."'
     activeSpeaker: 1
-    portraitOverride: {fileID: 0}
+    portraitOverride: {fileID: 21300000, guid: cd8db9821db63044fb4a10ff822a33cc, type: 3}
   - speakerName: Mentor
     text: '"Laporan resmi menyebutkan bahwa Richard tewas karena serangan jantung
       di ruang kerjanya. Tapi klien kita tidak percaya omong kosong itu."'
     activeSpeaker: 1
-    portraitOverride: {fileID: 0}
+    portraitOverride: {fileID: 21300000, guid: cd8db9821db63044fb4a10ff822a33cc, type: 3}
   - speakerName: MC
     text: '"Serangan jantung mendadak? Untuk ukuran miliarder teknologi yang selalu
       dimonitor kesehatannya secara digital? Sangat mencurigakan."'
     activeSpeaker: 0
-    portraitOverride: {fileID: 0}
-  - speakerName: Mentor
-    text: '"Tepat. Richard punya banyak musuh. Bahkan orang kepercayaannya, Anton,
-      memiliki motif. Tugasmu adalah masuk ke ruang kerja itu dan meretas komputernya."'
-    activeSpeaker: 1
-    portraitOverride: {fileID: 0}
-  - speakerName: MC
-    text: '"Ada petunjuk spesifik dari mana aku harus memulai pencarian?"'
-    activeSpeaker: 0
-    portraitOverride: {fileID: 0}
-  - speakerName: Mentor
-    text: '"Menurut data intelijen kita, file terakhir yang ada di sistemnya bernama
-      ''surat_wasiat.pdf''. Jangan langsung percaya pada nama file atau ekstensi
-      yang terlihat."'
-    activeSpeaker: 1
-    portraitOverride: {fileID: 0}
-  - speakerName: Mentor
-    text: '"Gunakan ilmu investigasi terminal yang sudah kuajarkan padamu. Ekstrak
-      metadata, periksa log modifikasi, dan jangan terkecoh alibi palsu."'
-    activeSpeaker: 1
-    portraitOverride: {fileID: 0}
-  - speakerName: MC
-    text: '"Paham. Aku tidak akan mengecewakan Bapak. Waktu kita terus berjalan,
-      aku akan menyusup masuk ke dalam sekarang."'
-    activeSpeaker: 0
-    portraitOverride: {fileID: 0}
-  - speakerName: Mentor
-    text: '"Semoga berhasil. Perhatikan langkahmu, dan klik bangunan rumah itu saat
-      kau sudah siap untuk masuk ke tahap investigasi."'
-    activeSpeaker: 1
-    portraitOverride: {fileID: 0}
+    portraitOverride: {fileID: 21300000, guid: 214fa6dc1e1846843b91a955abdc4c4d, type: 3}
   vnManager: {fileID: 1908391310}
 --- !u!4 &1494767713
 Transform:
@@ -2862,7 +2832,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1510295052}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2870,8 +2840,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -810, y: -81}
-  m_SizeDelta: {x: 332.9179, y: 375.642}
+  m_AnchoredPosition: {x: -644.5884, y: -165.01}
+  m_SizeDelta: {x: 630.8169, y: 749.99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1510295054
 MonoBehaviour:
@@ -2893,7 +2863,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 58e7829c30413b14b812c505a3a72c01, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 214fa6dc1e1846843b91a955abdc4c4d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3072,8 +3042,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 795, y: -45}
-  m_SizeDelta: {x: 476.8616, y: 406.8821}
+  m_AnchoredPosition: {x: 721.57, y: -190.78}
+  m_SizeDelta: {x: 476.8616, y: 698.45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1784144822
 MonoBehaviour:
@@ -3095,7 +3065,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c3187fe6421bc7948ab914c1018d75ad, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd8db9821db63044fb4a10ff822a33cc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
