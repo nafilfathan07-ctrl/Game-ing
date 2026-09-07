@@ -1468,6 +1468,7 @@ RectTransform:
   - {fileID: 1510295053}
   - {fileID: 235893043}
   - {fileID: 106578056}
+  - {fileID: 1105142002}
   m_Father: {fileID: 43351221}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2215,7 +2216,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1072475350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2314,6 +2315,82 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1105142001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1105142002}
+  - component: {fileID: 1105142004}
+  - component: {fileID: 1105142003}
+  m_Layer: 5
+  m_Name: CaseFolderPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1105142002
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105142001}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1502789256}
+  m_Father: {fileID: 745224706}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 74.93}
+  m_SizeDelta: {x: -890.4126, y: -485.619}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1105142003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105142001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1105142004
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105142001}
+  m_CullTransparentMesh: 1
 --- !u!1 &1124711827
 GameObject:
   m_ObjectHideFlags: 0
@@ -2687,30 +2764,80 @@ MonoBehaviour:
   inactiveScale: {x: 1, y: 1, z: 1}
   lines:
   - speakerName: Mentor
-    text: '"Koneksi stabil. Saluran audio terenkripsi. Apa kau bisa mendengarku dari
-      titik pantau itu?"'
+    text: Koneksi stabil. Saluran audio terenkripsi. Apa kau bisa mendengarku dari
+      titik pantau itu, Alex?
     activeSpeaker: 1
     portraitOverride: {fileID: 21300000, guid: cd8db9821db63044fb4a10ff822a33cc, type: 3}
+    showCaseFolderDuringThis: 0
   - speakerName: MC
-    text: '"Suara Bapak terdengar jelas. Aku sedang melihat ke arah rumah Richard
-      sekarang. Kondisinya sepi."'
+    text: Suara Bapak terdengar jelas. Aku sedang mengamati mansion Richard. Sepi.
+      Garis polisi sudah mengelilingi area rumah.
     activeSpeaker: 0
     portraitOverride: {fileID: 21300000, guid: 214fa6dc1e1846843b91a955abdc4c4d, type: 3}
-  - speakerName: Mentor
-    text: '"Bagus. Polisi baru saja pergi, tapi mereka akan kembali besok pagi dengan
-      tim forensik penuh. Kita harus bergerak lebih dulu."'
+    showCaseFolderDuringThis: 0
+  - speakerName: MENTOR
+    text: 'Mereka baru saja pergi. Kesimpulan resminya: Richard tewas karena serangan
+      jantung mendadak. Klien kita tidak percaya.'
     activeSpeaker: 1
     portraitOverride: {fileID: 21300000, guid: cd8db9821db63044fb4a10ff822a33cc, type: 3}
-  - speakerName: Mentor
-    text: '"Laporan resmi menyebutkan bahwa Richard tewas karena serangan jantung
-      di ruang kerjanya. Tapi klien kita tidak percaya omong kosong itu."'
-    activeSpeaker: 1
-    portraitOverride: {fileID: 21300000, guid: cd8db9821db63044fb4a10ff822a33cc, type: 3}
+    showCaseFolderDuringThis: 0
   - speakerName: MC
-    text: '"Serangan jantung mendadak? Untuk ukuran miliarder teknologi yang selalu
-      dimonitor kesehatannya secara digital? Sangat mencurigakan."'
+    text: Serangan jantung? Miliarder paranoid seperti Richard pasti menyinkronkan
+      data biometriknya ke sistem darurat rumah 24 jam penuh. Kalau detaknya melemah,
+      ambulans seharusnya tiba sebelum dia menyentuh lantai.
     activeSpeaker: 0
     portraitOverride: {fileID: 21300000, guid: 214fa6dc1e1846843b91a955abdc4c4d, type: 3}
+    showCaseFolderDuringThis: 0
+  - speakerName: MENTOR
+    text: Tepat. Ada yang memanipulasi sistem keselamatannya. Aku sudah mengirimkan
+      sketsa TKP dari kepolisian ke RootOS milikmu. Buka berkasnya.
+    activeSpeaker: 1
+    portraitOverride: {fileID: 21300000, guid: cd8db9821db63044fb4a10ff822a33cc, type: 3}
+    showCaseFolderDuringThis: 1
+  - speakerName: MC
+    text: Henti jantung, tidak ada luka fisik... Tunggu. Sketsa siluet tubuhnya ini
+      aneh.
+    activeSpeaker: 0
+    portraitOverride: {fileID: 21300000, guid: 214fa6dc1e1846843b91a955abdc4c4d, type: 3}
+    showCaseFolderDuringThis: 1
+  - speakerName: MENTOR
+    text: Apa yang kau temukan?
+    activeSpeaker: 1
+    portraitOverride: {fileID: 21300000, guid: cd8db9821db63044fb4a10ff822a33cc, type: 3}
+    showCaseFolderDuringThis: 1
+  - speakerName: MC
+    text: Posisi tubuhnya tersungkur ke depan, seolah dia sedang merangkak menjauh.
+      Kalau dia terkena serangan jantung mendadak saat duduk santai, posisinya tidak
+      akan seperti ini.
+    activeSpeaker: 0
+    portraitOverride: {fileID: 21300000, guid: 214fa6dc1e1846843b91a955abdc4c4d, type: 3}
+    showCaseFolderDuringThis: 1
+  - speakerName: MC
+    text: Dari titik pantauku di luar sini, aku bisa melihat pintu balkon ruang kerjanya
+      sedikit terbuka.
+    activeSpeaker: 0
+    portraitOverride: {fileID: 21300000, guid: 214fa6dc1e1846843b91a955abdc4c4d, type: 3}
+    showCaseFolderDuringThis: 0
+  - speakerName: MENTOR
+    text: Dia menyadari ada yang salah dengan jantungnya. Dia berusaha keluar dari
+      ruangan itu untuk mencari udara atau meminta tolong.
+    activeSpeaker: 1
+    portraitOverride: {fileID: 21300000, guid: cd8db9821db63044fb4a10ff822a33cc, type: 3}
+    showCaseFolderDuringThis: 0
+  - speakerName: MC
+    text: Tapi sistem rumah ini menolaknya. Seseorang menguncinya dari dalam sistem,
+      membiarkannya kehabisan napas, lalu melonggarkan kuncinya lagi agar terlihat
+      seperti insiden biasa. Aku harus memeriksa terminal di meja kerjanya sekarang.
+    activeSpeaker: 0
+    portraitOverride: {fileID: 21300000, guid: 214fa6dc1e1846843b91a955abdc4c4d, type: 3}
+    showCaseFolderDuringThis: 0
+  - speakerName: MENTOR
+    text: Gunakan jalur balkon yang terbuka itu. Bergeraklah dalam senyap. Begitu
+      kau menyalakan terminalnya, kita bedah log pertamanya.
+    activeSpeaker: 1
+    portraitOverride: {fileID: 21300000, guid: cd8db9821db63044fb4a10ff822a33cc, type: 3}
+    showCaseFolderDuringThis: 0
+  caseFolderPanel: {fileID: 1105142001}
   vnManager: {fileID: 1908391310}
 --- !u!4 &1494767713
 Transform:
@@ -2727,6 +2854,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1502789255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1502789256}
+  - component: {fileID: 1502789258}
+  - component: {fileID: 1502789257}
+  m_Layer: 5
+  m_Name: FolderImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1502789256
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502789255}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1105142002}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1502789257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502789255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 3cba49e94ffce904a9d2aac1b09f7861, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1502789258
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502789255}
+  m_CullTransparentMesh: 1
 --- !u!1 &1506666560
 GameObject:
   m_ObjectHideFlags: 0

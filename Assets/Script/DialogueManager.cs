@@ -12,7 +12,11 @@ public class DialogueLine
     [TextArea(2, 4)]
     public string text;
     public Speaker activeSpeaker; 
-    public Sprite portraitOverride; 
+    public Sprite portraitOverride;
+
+    [Header("Folder Kasus")]
+    [Tooltip("Centang kalau SAAT baris ini tampil, folder kasus harus terlihat di layar. Centang berturut-turut di beberapa baris = folder tetap nyala terus tanpa berkedip, dan dialog tetap lanjut normal di baliknya. Uncheck di baris berikutnya untuk otomatis menutup folder.")]
+    public bool showCaseFolderDuringThis;
 }
 
 public class DialogueManager : MonoBehaviour
@@ -48,6 +52,9 @@ public class DialogueManager : MonoBehaviour
     [Header("Data Cerita")]
     public DialogueLine[] lines;
 
+    [Header("Folder Kasus")]
+    public GameObject caseFolderPanel; // drag CaseFolderPanel ke sini
+
     [Header("Pengatur Transisi")]
     public VNToExploreManager vnManager;
 
@@ -63,6 +70,7 @@ public class DialogueManager : MonoBehaviour
         leftTextBubble.SetActive(false);
         rightTextBubble.SetActive(false);
         if (centerTextBubble != null) centerTextBubble.SetActive(false);
+        if (caseFolderPanel != null) caseFolderPanel.SetActive(false);
 
         leftPortraitImage.rectTransform.localScale = inactiveScale;
         rightPortraitImage.rectTransform.localScale = inactiveScale;
@@ -84,6 +92,13 @@ public class DialogueManager : MonoBehaviour
         currentIndex = index;
         DialogueLine line = lines[index];
 
+        // Folder cuma ngikutin status baris SAAT INI — gak ada lagi mekanisme
+        // "buka lalu tunggu ditutup". Kalau baris ini & baris sebelumnya sama-sama
+        // dicentang, panel gak akan di-toggle mati-nyala, karena SetActive(true)
+        // ke objek yang udah aktif itu no-op (gak ada efek visual apa pun).
+        if (caseFolderPanel != null)
+            caseFolderPanel.SetActive(line.showCaseFolderDuringThis);
+
         leftTextBubble.SetActive(false);
         rightTextBubble.SetActive(false);
         if (centerTextBubble != null) centerTextBubble.SetActive(false);
@@ -91,10 +106,6 @@ public class DialogueManager : MonoBehaviour
         if (line.activeSpeaker == Speaker.Left)
         {
             rightPortraitImage.transform.SetAsFirstSibling();
-
-            // PENTING: portrait dinaikkan DULUAN, baru text bubble.
-            // SetAsLastSibling yang dipanggil PALING AKHIR = tampil PALING DEPAN.
-            // Jadi urutannya harus: portrait dulu, text bubble menyusul di atasnya.
             leftPortraitImage.transform.SetAsLastSibling();
             leftTextBubble.transform.SetAsLastSibling();
 
@@ -107,7 +118,6 @@ public class DialogueManager : MonoBehaviour
         else if (line.activeSpeaker == Speaker.Right)
         {
             leftPortraitImage.transform.SetAsFirstSibling();
-
             rightPortraitImage.transform.SetAsLastSibling();
             rightTextBubble.transform.SetAsLastSibling();
 
@@ -163,6 +173,7 @@ public class DialogueManager : MonoBehaviour
             leftTextBubble.SetActive(false);
             rightTextBubble.SetActive(false);
             if (centerTextBubble != null) centerTextBubble.SetActive(false);
+            if (caseFolderPanel != null) caseFolderPanel.SetActive(false);
             
             if (leftPortraitImage != null) leftPortraitImage.gameObject.SetActive(false);
             if (rightPortraitImage != null) rightPortraitImage.gameObject.SetActive(false);
