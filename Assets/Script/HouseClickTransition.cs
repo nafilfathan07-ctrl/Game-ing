@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class HouseClickTransition : MonoBehaviour
 {
-    public string namaSceneTujuan = "Template Indoor";
+    public string namaSceneTujuan = "Stage 1";
     public SceneFader fader;
 
     private void OnMouseDown()
