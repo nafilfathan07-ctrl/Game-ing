@@ -7,12 +7,26 @@ using System;
 
 public class TerminalManager : MonoBehaviour
 {
+    [Header("UI Terminal")]
     public TMP_Text consoleOutput;
     public TMP_InputField terminalInput;
     public ScrollRect terminalScroll;
     
     public FileSystemManager fileSystemManager;
     private bool isExecuting = false;
+
+    [Header("Audio Terminal")]
+    public AudioClip suaraBuka;   // Masukkan efek suara pas terminal pop-up
+    public AudioClip suaraTutup;  // Masukkan efek suara pas tombol back diklik
+    private AudioSource audioSource;
+
+    private void Awake()
+    {
+        // Bikin komponen AudioSource otomatis pas game mulai
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;
+        audioSource.spatialBlend = 0f; // Set ke 0 (2D) biar suaranya selalu jelas di telinga
+    }
 
     private void Start()
     {
@@ -22,6 +36,12 @@ public class TerminalManager : MonoBehaviour
 
     private void OnEnable()
     {
+        // 1. MAINKAN SUARA BUKA TERMINAL
+        if (audioSource != null && suaraBuka != null)
+        {
+            audioSource.PlayOneShot(suaraBuka);
+        }
+
         if (terminalInput != null && !isExecuting)
         {
             terminalInput.text = "";
@@ -29,6 +49,26 @@ public class TerminalManager : MonoBehaviour
             terminalInput.ActivateInputField();
             StartCoroutine(ScrollKeBawah());
         }
+    }
+
+    // --- FUNGSI BARU BUAT TOMBOL BACK / CLOSE TERMINAL ---
+    public void TutupTerminal()
+    {
+        // 2. MAINKAN SUARA TUTUP (Pakai Trik Objek Sementara)
+        if (suaraTutup != null)
+        {
+            GameObject pemutarSementara = new GameObject("SuaraTutupTemp");
+            AudioSource src = pemutarSementara.AddComponent<AudioSource>();
+            src.clip = suaraTutup;
+            src.spatialBlend = 0f; // Biar tetep 2D
+            src.Play();
+            
+            // Hancurkan pemutar sementara ini otomatis setelah durasi lagunya habis
+            Destroy(pemutarSementara, suaraTutup.length); 
+        }
+
+        // Matikan UI Terminalnya
+        gameObject.SetActive(false);
     }
 
     private void Update()
@@ -96,7 +136,10 @@ public class TerminalManager : MonoBehaviour
             case "uname": CetakTeks("KopdOS 5.15.0-generic x86_64"); break;
             case "uptime": CetakTeks(" " + DateTime.Now.ToString("HH:mm:ss") + " up 2 days,  1 user,  load average: 0.00, 0.01, 0.05"); break;
             case "sudo": CetakTeks("rayhan is not in the sudoers file. This incident will be reported."); break;
-            case "exit": CetakTeks("Process detached. Please close the window via GUI."); break;
+            case "exit": 
+                CetakTeks("Process detached. Please close the window via GUI."); 
+                // Opsional: Kamu bisa panggil TutupTerminal() di sini kalau mau terminalnya langsung ketutup pas ngetik exit
+                break;
             case "pwd": CetakTeks("/home/rayhan/desktop/investigation"); break;
 
             case "echo":
@@ -206,7 +249,7 @@ public class TerminalManager : MonoBehaviour
                 break;
 
             case "neofetch":
-                CetakTeks("       .o+`                   rayhan@KopdOS\n      `ooo/                   -------------\n     `+oooo:                  OS: KopdOS 1.0.4 x86_64\n    `+oooooo:                 Kernel: 5.15.0-generic");
+                CetakTeks("       .o+`                    rayhan@KopdOS\n      `ooo/                    -------------\n     `+oooo:                   OS: KopdOS 1.0.4 x86_64\n    `+oooooo:                  Kernel: 5.15.0-generic");
                 break;
 
             case "": break;

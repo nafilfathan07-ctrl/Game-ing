@@ -14,6 +14,10 @@ public class DialogueLine
     public Speaker activeSpeaker; 
     public Sprite portraitOverride;
 
+    [Header("Audio (Opsional)")]
+    [Tooltip("Masukkan file suara yang diputar saat baris ini muncul")]
+    public AudioClip voiceClip; // <--- SLOT AUDIO DITAMBAHKAN DI SINI
+
     [Header("Folder Kasus")]
     [Tooltip("Centang kalau SAAT baris ini tampil, folder kasus harus terlihat di layar. Centang berturut-turut di beberapa baris = folder tetap nyala terus tanpa berkedip, dan dialog tetap lanjut normal di baliknya. Uncheck di baris berikutnya untuk otomatis menutup folder.")]
     public bool showCaseFolderDuringThis;
@@ -40,8 +44,10 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text centerNameText; 
     public TMP_Text centerDialogueText;
 
-    [Header("Pengaturan Teks")]
+    [Header("Pengaturan Teks & Audio")]
     public float typingSpeed = 0.03f;
+    [Tooltip("Masukkan komponen Audio Source dari Inspector ke sini")]
+    public AudioSource audioSource; // <--- PEMUTAR AUDIO DITAMBAHKAN DI SINI
     
     [Header("Pengaturan Dimming & Skala")]
     public float dimTransitionSpeed = 6f;
@@ -92,10 +98,7 @@ public class DialogueManager : MonoBehaviour
         currentIndex = index;
         DialogueLine line = lines[index];
 
-        // Folder cuma ngikutin status baris SAAT INI — gak ada lagi mekanisme
-        // "buka lalu tunggu ditutup". Kalau baris ini & baris sebelumnya sama-sama
-        // dicentang, panel gak akan di-toggle mati-nyala, karena SetActive(true)
-        // ke objek yang udah aktif itu no-op (gak ada efek visual apa pun).
+        // Folder cuma ngikutin status baris SAAT INI
         if (caseFolderPanel != null)
             caseFolderPanel.SetActive(line.showCaseFolderDuringThis);
 
@@ -140,6 +143,17 @@ public class DialogueManager : MonoBehaviour
 
         SetActiveSpeaker(line.activeSpeaker);
 
+        // --- SISTEM PEMUTAR AUDIO BARU ---
+        if (audioSource != null)
+        {
+            audioSource.Stop(); // Matikan suara dialog sebelumnya kalau belum selesai
+            if (line.voiceClip != null)
+            {
+                audioSource.clip = line.voiceClip;
+                audioSource.Play();
+            }
+        }
+
         if (typingRoutine != null) StopCoroutine(typingRoutine);
         if (currentDialogText != null)
             typingRoutine = StartCoroutine(TypeText(line.text));
@@ -177,6 +191,9 @@ public class DialogueManager : MonoBehaviour
             
             if (leftPortraitImage != null) leftPortraitImage.gameObject.SetActive(false);
             if (rightPortraitImage != null) rightPortraitImage.gameObject.SetActive(false);
+
+            // Matikan suara kalau dialog selesai
+            if (audioSource != null) audioSource.Stop();
 
             Debug.Log("Dialog selesai.");
             

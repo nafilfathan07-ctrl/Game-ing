@@ -1041,7 +1041,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Pascal Narendra
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5067300d52dd9434290be51013bc3cd8, type: 2}
   m_sharedMaterial: {fileID: -2492043107295837221, guid: 5067300d52dd9434290be51013bc3cd8, type: 2}
@@ -1258,7 +1258,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rehan wangsaf
+  m_text: Java Arkhan
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5067300d52dd9434290be51013bc3cd8, type: 2}
   m_sharedMaterial: {fileID: -2492043107295837221, guid: 5067300d52dd9434290be51013bc3cd8, type: 2}
@@ -1863,7 +1863,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MC
+  m_text: Pascal Narendra
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5067300d52dd9434290be51013bc3cd8, type: 2}
   m_sharedMaterial: {fileID: -2492043107295837221, guid: 5067300d52dd9434290be51013bc3cd8, type: 2}
@@ -2535,8 +2535,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b344d6c1578bb488a8e6f7d7467877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HouseClickTransition
-  namaSceneTujuan: Template Indoor
+  namaSceneTujuan: StagePertama
   fader: {fileID: 1072475350}
+  suaraKlik: {fileID: 8300000, guid: 3a103364969359a408c77655adfa5146, type: 3}
 --- !u!65 &1202564396
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2758,84 +2759,97 @@ MonoBehaviour:
   centerNameText: {fileID: 0}
   centerDialogueText: {fileID: 0}
   typingSpeed: 0.03
+  audioSource: {fileID: 0}
   dimTransitionSpeed: 6
   inactiveBrightness: 0.4
   activeScale: {x: 1.25, y: 1.25, z: 1}
   inactiveScale: {x: 1, y: 1, z: 1}
   lines:
-  - speakerName: Mentor
+  - speakerName: Pascal Narendra
     text: Koneksi stabil. Saluran audio terenkripsi. Apa kau bisa mendengarku dari
       titik pantau itu, Alex?
     activeSpeaker: 1
     portraitOverride: {fileID: 21300000, guid: cd8db9821db63044fb4a10ff822a33cc, type: 3}
+    voiceClip: {fileID: 8300000, guid: e6ac026d0638af5459af3832531cdf67, type: 3}
     showCaseFolderDuringThis: 0
-  - speakerName: MC
+  - speakerName: Java Arkhan
     text: Suara Bapak terdengar jelas. Aku sedang mengamati mansion Richard. Sepi.
       Garis polisi sudah mengelilingi area rumah.
     activeSpeaker: 0
     portraitOverride: {fileID: 21300000, guid: 214fa6dc1e1846843b91a955abdc4c4d, type: 3}
+    voiceClip: {fileID: 8300000, guid: 012caf9f8e9d3d540a4c30eb6d83b915, type: 3}
     showCaseFolderDuringThis: 0
-  - speakerName: MENTOR
+  - speakerName: Pascal Narendra
     text: 'Mereka baru saja pergi. Kesimpulan resminya: Richard tewas karena serangan
       jantung mendadak. Klien kita tidak percaya.'
     activeSpeaker: 1
     portraitOverride: {fileID: 21300000, guid: cd8db9821db63044fb4a10ff822a33cc, type: 3}
+    voiceClip: {fileID: 8300000, guid: e6ac026d0638af5459af3832531cdf67, type: 3}
     showCaseFolderDuringThis: 0
-  - speakerName: MC
+  - speakerName: Java Arkhan
     text: Serangan jantung? Miliarder paranoid seperti Richard pasti menyinkronkan
       data biometriknya ke sistem darurat rumah 24 jam penuh. Kalau detaknya melemah,
       ambulans seharusnya tiba sebelum dia menyentuh lantai.
     activeSpeaker: 0
     portraitOverride: {fileID: 21300000, guid: 214fa6dc1e1846843b91a955abdc4c4d, type: 3}
+    voiceClip: {fileID: 8300000, guid: 012caf9f8e9d3d540a4c30eb6d83b915, type: 3}
     showCaseFolderDuringThis: 0
-  - speakerName: MENTOR
+  - speakerName: Pascal Narendra
     text: Tepat. Ada yang memanipulasi sistem keselamatannya. Aku sudah mengirimkan
       sketsa TKP dari kepolisian ke RootOS milikmu. Buka berkasnya.
     activeSpeaker: 1
     portraitOverride: {fileID: 21300000, guid: cd8db9821db63044fb4a10ff822a33cc, type: 3}
+    voiceClip: {fileID: 8300000, guid: e6ac026d0638af5459af3832531cdf67, type: 3}
     showCaseFolderDuringThis: 1
-  - speakerName: MC
+  - speakerName: Java Arkhan
     text: Henti jantung, tidak ada luka fisik... Tunggu. Sketsa siluet tubuhnya ini
       aneh.
     activeSpeaker: 0
     portraitOverride: {fileID: 21300000, guid: 214fa6dc1e1846843b91a955abdc4c4d, type: 3}
+    voiceClip: {fileID: 8300000, guid: 012caf9f8e9d3d540a4c30eb6d83b915, type: 3}
     showCaseFolderDuringThis: 1
-  - speakerName: MENTOR
+  - speakerName: Pascal Narendra
     text: Apa yang kau temukan?
     activeSpeaker: 1
     portraitOverride: {fileID: 21300000, guid: cd8db9821db63044fb4a10ff822a33cc, type: 3}
+    voiceClip: {fileID: 8300000, guid: e6ac026d0638af5459af3832531cdf67, type: 3}
     showCaseFolderDuringThis: 1
-  - speakerName: MC
+  - speakerName: Java Arkhan
     text: Posisi tubuhnya tersungkur ke depan, seolah dia sedang merangkak menjauh.
       Kalau dia terkena serangan jantung mendadak saat duduk santai, posisinya tidak
       akan seperti ini.
     activeSpeaker: 0
     portraitOverride: {fileID: 21300000, guid: 214fa6dc1e1846843b91a955abdc4c4d, type: 3}
+    voiceClip: {fileID: 8300000, guid: 012caf9f8e9d3d540a4c30eb6d83b915, type: 3}
     showCaseFolderDuringThis: 1
-  - speakerName: MC
+  - speakerName: Java Arkhan
     text: Dari titik pantauku di luar sini, aku bisa melihat pintu balkon ruang kerjanya
       sedikit terbuka.
     activeSpeaker: 0
     portraitOverride: {fileID: 21300000, guid: 214fa6dc1e1846843b91a955abdc4c4d, type: 3}
+    voiceClip: {fileID: 8300000, guid: 012caf9f8e9d3d540a4c30eb6d83b915, type: 3}
     showCaseFolderDuringThis: 0
-  - speakerName: MENTOR
+  - speakerName: Pascal Narendra
     text: Dia menyadari ada yang salah dengan jantungnya. Dia berusaha keluar dari
       ruangan itu untuk mencari udara atau meminta tolong.
     activeSpeaker: 1
     portraitOverride: {fileID: 21300000, guid: cd8db9821db63044fb4a10ff822a33cc, type: 3}
+    voiceClip: {fileID: 8300000, guid: e6ac026d0638af5459af3832531cdf67, type: 3}
     showCaseFolderDuringThis: 0
-  - speakerName: MC
+  - speakerName: Java Arkhan
     text: Tapi sistem rumah ini menolaknya. Seseorang menguncinya dari dalam sistem,
       membiarkannya kehabisan napas, lalu melonggarkan kuncinya lagi agar terlihat
       seperti insiden biasa. Aku harus memeriksa terminal di meja kerjanya sekarang.
     activeSpeaker: 0
     portraitOverride: {fileID: 21300000, guid: 214fa6dc1e1846843b91a955abdc4c4d, type: 3}
+    voiceClip: {fileID: 8300000, guid: 012caf9f8e9d3d540a4c30eb6d83b915, type: 3}
     showCaseFolderDuringThis: 0
-  - speakerName: MENTOR
+  - speakerName: Pascal Narendra
     text: Gunakan jalur balkon yang terbuka itu. Bergeraklah dalam senyap. Begitu
       kau menyalakan terminalnya, kita bedah log pertamanya.
     activeSpeaker: 1
     portraitOverride: {fileID: 21300000, guid: cd8db9821db63044fb4a10ff822a33cc, type: 3}
+    voiceClip: {fileID: 8300000, guid: e6ac026d0638af5459af3832531cdf67, type: 3}
     showCaseFolderDuringThis: 0
   caseFolderPanel: {fileID: 1105142001}
   vnManager: {fileID: 1908391310}
@@ -3083,6 +3097,135 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1510295052}
   m_CullTransparentMesh: 1
+--- !u!1 &1663203216
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1663203218}
+  - component: {fileID: 1663203217}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1663203217
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663203216}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 2baaea8236e06a146a03748323499a4b, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1663203218
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663203216}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -278.71286, y: 74.38954, z: -65.36523}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1731527626
 GameObject:
   m_ObjectHideFlags: 0
@@ -3725,3 +3868,4 @@ SceneRoots:
   - {fileID: 1506666563}
   - {fileID: 1908391311}
   - {fileID: 1072475354}
+  - {fileID: 1663203218}
